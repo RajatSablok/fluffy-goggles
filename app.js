@@ -5,7 +5,7 @@ const rateLimit = require("express-rate-limit");
 
 require("dotenv").config();
 
-//routers
+const todoRoutes = require("./api/routes/todo");
 
 const app = express();
 
@@ -49,6 +49,8 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.use("/todo", todoRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Route not found");
